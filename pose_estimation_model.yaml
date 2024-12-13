@@ -1,0 +1,39 @@
+application: pose_estimation   #
+model_name: yolov7-w6
+weight: yolov7-w6-pose.pt                       # weight file path
+onnx_path: yolov7-w6-pose.onnx                  # onnx model path
+onnx_i8_path: yolov7-w6-pose_i8.onnx # quantized onnx model path
+
+calibration_params:
+  calibration_method: MSE_ASYM # calibration method
+  calibration_data: val2017          # calibration data path
+  num_calibration_data: 200     # number of calibration data
+
+conf_thres: 0.15
+iou_thres: 0.5
+input_shape: [960, 960]         # model input shape (Height, Width)
+anchors:                        # anchor information
+  - [24,12, 36,18, 48,24]
+  - [72,36, 96,48, 120,60]
+  - [144,72, 192,96, 240,120]
+  
+class_names:
+  - person
+keypoint_names:
+  - nose
+  - left_eye
+  - right_eye
+  - left_ear
+  - right_ear
+  - left_shoulder
+  - right_shoulder
+  - left_elbow
+  - right_elbow
+  - left_wrist
+  - right_wrist
+  - left_hip
+  - right_hip
+  - left_knee
+  - right_knee
+  - left_ankle
+  - right_ankle
